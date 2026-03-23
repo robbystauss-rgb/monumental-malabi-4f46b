@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REC Mama Made | Mockup and Order</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="topbar"><div class="container nav">
+  <div class="brand">REC Mama Made<small>Custom leather patch hats</small></div>
+  <nav class="navlinks"><a class="" href="index.html">Home</a><a class="" href="112.html">112 Colorways</a><a class="" href="168.html">168</a><a class="" href="256.html">256</a><a class="" href="printed-camo.html">Printed / Camo</a><a class="active" href="order.html">Mockup / Order</a></nav>
+</div></header>
+
+<section class="hero"><div class="container">
+  <span class="kicker">Custom order form</span>
+  <h1>Start your custom hat order.</h1>
+  <p>Choose your hat family, upload artwork, preview the patch area, and copy your order summary for a quote.</p>
+</div></section>
+<section class="section"><div class="container order-layout">
+  <div class="list-panel">
+    <h2>Build your hat</h2>
+    <div class="form-grid">
+      <div><label>Name</label><input id="customerName" class="field" placeholder="Customer name"></div>
+      <div><label>Email</label><input id="customerEmail" class="field" placeholder="name@email.com"></div>
+      <div><label>Hat family</label><select id="orderFamily" class="field"><option value="112">112 Trucker</option><option value="168">168 Seven Panel</option><option value="256">256 Gramps</option><option value="112PM">112PM Printed Mesh</option><option value="112P">112P Printed Trucker</option><option value="112PFP">112PFP Printed Five Panel</option><option value="168P">168P Printed Seven Panel</option><option value="256P">256P Printed Gramps</option></select></div>
+      <div><label>Colorway / pattern</label><input id="colorway" class="field" placeholder="Example: Black/White or Realtree Edge/Brown"></div>
+      <div><label>Patch tier</label><select id="patchTier" class="field"><option value="standard">Hat + custom patch — $30</option><option value="premium">Premium hat + patch — $35</option></select></div>
+      <div><label>Patch shape</label><select id="patchShape" class="field"><option>Rectangle</option><option>Circle</option><option>Oval</option><option>Shield</option><option>Custom shape</option></select></div>
+      <div class="full"><label>Patch text / initials</label><input id="patchText" class="field" placeholder="Brand name, initials, or patch placeholder text"></div>
+      <div><label>Quantity</label><input id="quantity" class="field" type="number" min="1" value="12"></div>
+      <div><label>Upload artwork</label><input id="artUpload" class="field" type="file" accept="image/*"></div>
+      <div class="full"><label>Notes</label><textarea id="orderNotes" class="field" rows="5" placeholder="Logo notes, leather color, timeline, event details, or special instructions"></textarea></div>
+    </div>
+    <div class="summary" style="margin-top:16px" id="summaryBox"></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px"><button class="btn btn-primary" id="copyBtn" type="button">Copy order summary</button><button class="btn btn-secondary" id="emailBtn" type="button">Open email draft</button></div>
+    <p class="note" style="margin-top:12px">Use this form to build your order details and send them over for pricing and proofing.</p>
+  </div>
+  <div class="mockup-stage">
+    <h2 style="margin-top:0">Live patch preview</h2>
+    <p class="lead">Upload a logo to preview placement. This is a sales mockup, not a final proof.</p>
+    <div class="mockup-wrap">
+      <img id="mockupBase" class="mockup-hat" src="assets/112-black.png" alt="Hat mockup base">
+      <div class="patch-overlay"><span id="patchLabel">Your patch preview</span><img id="patchPreview" alt="Uploaded artwork preview" style="display:none"></div>
+    </div>
+  </div>
+</div></section>
+
+<footer class="footer"><div class="container"><div><strong>REC Mama Made</strong><br><span class="note">Custom hats for businesses, teams, events, and everyday wear.</span></div><div class="note">Standard hat + patch: $30 · Premium hat + patch: $35 · Every 12 hats = 1 free</div></div></footer>
+<script src="assets/catalog-data.js"></script><script src="assets/app.js"></script>
+</body></html>
