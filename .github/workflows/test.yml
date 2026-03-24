@@ -15,5 +15,9 @@ jobs:
       - name: Static site sanity check
         run: |
           test -f index.html
-          test -f netlify.toml
+          test -f order.html
+          test -f assets/styles.css
+          test -f assets/app.js
+          test -f assets/catalog-data.js
+          test -f .github/workflows/deploy-pages.yml
           echo "Static site repo looks good."
