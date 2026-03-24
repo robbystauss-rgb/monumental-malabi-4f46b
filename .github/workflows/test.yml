@@ -1,0 +1,19 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Static site sanity check
+        run: |
+          test -f index.html
+          test -f netlify.toml
+          echo "Static site repo looks good."
