@@ -72,15 +72,22 @@ input.search, select.field, input.field, textarea.field{width:100%;padding:14px 
 .footer{padding:26px 0 40px;color:var(--muted)}
 .footer .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
 .note{font-size:.93rem;color:var(--muted)}
+.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.product-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.product-thumb{width:100%;aspect-ratio:1/1;object-fit:cover;background:#f7fbfb}
+.view-switch{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.view-switch button{border:1px solid var(--line);background:#fff;color:var(--brand-2);border-radius:999px;padding:8px 12px;font:inherit;font-weight:800;cursor:pointer}
+.view-switch button.is-active{background:rgba(0,169,165,.14);border-color:rgba(0,169,165,.35)}
 @media (max-width: 980px){
   .hero-grid,.two-col,.order-layout,.controls{grid-template-columns:1fr}
   .grid-4,.grid-3,.color-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .mockup-stage{position:static;min-height:auto}
 }
 @media (max-width: 640px){
   .nav{align-items:flex-start;flex-direction:column}
   .navlinks{gap:8px}
-  .grid-4,.grid-3,.color-grid,.form-grid{grid-template-columns:1fr}
+  .grid-4,.grid-3,.color-grid,.form-grid,.product-grid{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr}
 }
