@@ -2,47 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>REC Mama Made | Mockup and Order</title>
-<link rel="stylesheet" href="assets/styles.css?v=20260324g">
+<title>REC Mama Made | Custom Hats & Leather Patches</title>
+<meta name="description" content="Build a custom REC Mama Made leather patch hat or order custom engraved leather patches by themselves. Choose hat style, patch shape, size and placement, upload artwork, and preview your order.">
+<link rel="stylesheet" href="assets/styles.css?v=20260815a">
 </head>
 <body>
 <header class="topbar"><div class="container nav">
-  <div class="brand">REC Mama Made<small>Custom leather patch hats</small></div>
-  <nav class="navlinks"><a href="index.html">Home</a><a href="112.html">112 Colorways</a><a href="168.html">168</a><a href="256.html">256</a><a href="printed-camo.html">Printed / Camo</a><a class="active" href="order.html">Mockup / Order</a></nav>
+  <div class="brand">REC Mama Made<small>Custom leather patch hats & patches</small></div>
+  <nav class="navlinks"><a href="index.html">Home</a><a href="112.html">112 Colorways</a><a href="168.html">168</a><a href="256.html">256</a><a href="printed-camo.html">Printed / Camo</a><a class="active" href="order.html">Build / Order</a></nav>
 </div></header>
 <section class="hero"><div class="container">
-  <span class="kicker">Custom order form</span>
-  <h1>Start your custom hat order.</h1>
-  <p>Choose your hat family, upload artwork, preview the patch area, and copy your order summary for a quote.</p>
+  <span class="kicker">Build it your way</span>
+  <h1>Custom hats or patches—without the guesswork.</h1>
+  <p>Choose a hat or patch-only order, upload your artwork, select the shape, size, and placement, then use the live preview to build a clear order request.</p>
+  <div class="trust-strip" aria-label="Order highlights">
+    <span>Custom patch hats from $30</span>
+    <span>Patch-only orders from $5</span>
+    <span>Popular placement presets</span>
+    <span>Bulk orders welcome</span>
+  </div>
 </div></section>
 <section class="section"><div class="container order-layout">
   <div class="list-panel">
-    <h2>Build your hat</h2>
+    <h2>Build your order</h2>
+    <div class="offer-note"><strong>Best seller setup:</strong> front-center leather patch on a Richardson-style trucker hat. For patches by themselves, choose <strong>Patch Only</strong> below.</div>
     <div class="form-grid">
       <div><label>Name</label><input id="customerName" class="field" placeholder="Customer name"></div>
       <div><label>Email</label><input id="customerEmail" class="field" placeholder="name@email.com"></div>
-      <div><label>Hat family</label><select id="orderFamily" class="field"><option value="112">112 Trucker</option><option value="168">168 Seven Panel</option><option value="256">256 Gramps</option><option value="112PM">112PM Printed Mesh</option><option value="112P">112P Printed Trucker</option><option value="112PFP">112PFP Printed Five Panel</option><option value="168P">168P Printed Seven Panel</option><option value="256P">256P Printed Gramps</option></select></div>
-      <div><label>Colorway / pattern</label><input id="colorway" class="field" placeholder="Example: Black/White or Realtree Edge/Brown"></div>
-      <div><label>Patch tier</label><select id="patchTier" class="field"><option value="standard">Hat + custom patch — $30</option><option value="premium">Premium hat + patch — $35</option></select></div>
-      <div><label>Patch shape</label><select id="patchShape" class="field"><option>Rectangle</option><option>Circle</option><option>Oval</option><option>Shield</option><option>Custom shape</option></select></div>
-      <div class="full"><label>Patch text / initials</label><input id="patchText" class="field" placeholder="Brand name, initials, or patch placeholder text"></div>
-      <div><label>Quantity</label><input id="quantity" class="field" type="number" min="1" value="12"></div>
+      <div><label>Order type</label><select id="orderType" class="field"><option value="hat">Custom Hat + Patch</option><option value="patch">Custom Patch Only — from $5</option></select></div>
+      <div class="hat-only"><label>Hat family</label><select id="orderFamily" class="field"><option value="112">112 Trucker</option><option value="168">168 Seven Panel</option><option value="256">256 Gramps</option><option value="112PM">112PM Printed Mesh</option><option value="112P">112P Printed Trucker</option><option value="112PFP">112PFP Printed Five Panel</option><option value="168P">168P Printed Seven Panel</option><option value="256P">256P Printed Gramps</option></select></div>
+      <div class="hat-only"><label>Colorway / pattern</label><input id="colorway" class="field" placeholder="Example: Black/White or Realtree Edge/Brown"></div>
+      <div class="hat-only"><label>Hat tier</label><select id="patchTier" class="field"><option value="standard">Standard hat + custom patch — $30</option><option value="premium">Premium hat + custom patch — $35</option></select></div>
+      <div><label>Patch shape</label><select id="patchShape" class="field"><option>Rectangle</option><option>Rounded Rectangle</option><option>Circle</option><option>Oval</option><option>Hexagon</option><option>Shield</option><option>Louisiana</option><option>Custom Die-Cut</option></select></div>
+      <div><label>Patch size</label><select id="patchSize" class="field"><option value="small">Small — approx. 2.25 in</option><option value="medium" selected>Medium — approx. 2.75 in</option><option value="large">Large — approx. 3.25 in</option></select></div>
+      <div class="hat-only"><label>Patch placement</label><select id="patchPlacement" class="field"><option value="front-center">Front Center — Most Popular</option><option value="left-front">Left Front Panel</option><option value="right-front">Right Front Panel</option><option value="side">Side Panel</option><option value="rear">Rear / Back</option></select></div>
+      <div><label>Quantity</label><input id="quantity" class="field" type="number" min="1" value="1"></div>
+      <div class="full"><label>Patch text / initials</label><input id="patchText" class="field" placeholder="Business name, initials, wording, or patch placeholder text"></div>
       <div><label>Upload artwork</label><input id="artUpload" class="field" type="file" accept="image/*"></div>
-      <div class="full"><label>Notes</label><textarea id="orderNotes" class="field" rows="5" placeholder="Logo notes, leather color, timeline, event details, or special instructions"></textarea></div>
+      <div class="full"><label>Notes</label><textarea id="orderNotes" class="field" rows="5" placeholder="Leather color, backing preference, exact dimensions, event date, bulk-order notes, or special instructions"></textarea></div>
     </div>
+
+    <div class="placement-guide hat-only" aria-label="Popular patch placement options">
+      <div class="placement-guide-head"><strong>Popular patch placements</strong><span>Tap one to preview it.</span></div>
+      <div class="placement-chips">
+        <button type="button" data-placement="front-center" class="placement-chip is-active">Front Center</button>
+        <button type="button" data-placement="left-front" class="placement-chip">Left Front</button>
+        <button type="button" data-placement="right-front" class="placement-chip">Right Front</button>
+        <button type="button" data-placement="side" class="placement-chip">Side</button>
+        <button type="button" data-placement="rear" class="placement-chip">Rear</button>
+      </div>
+      <p class="note">Front-center is calibrated as the default because it is the most common leather-patch hat placement. Side and rear selections are recorded in the order even when the front-view mockup cannot display them accurately.</p>
+    </div>
+
     <div class="summary" style="margin-top:16px" id="summaryBox"></div>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px"><button class="btn btn-primary" id="copyBtn" type="button">Copy order summary</button><button class="btn btn-secondary" id="emailBtn" type="button">Open email draft</button></div>
-    <p class="note" style="margin-top:12px">Use this form to build your order details and send them over for pricing and proofing.</p>
+    <p class="note" style="margin-top:12px">Preview is for order planning only. Final artwork, leather color, sizing, and production placement can be confirmed before production.</p>
   </div>
   <div class="mockup-stage">
-    <h2 style="margin-top:0">Live patch preview</h2>
-    <p class="lead">Upload a logo to preview placement. This is a sales mockup, not a final proof.</p>
-    <div class="mockup-wrap">
+    <div class="mockup-stage-head">
+      <div><h2 style="margin-top:0">Live patch preview</h2><p class="lead">Upload a logo or type patch text to preview scale and front placement.</p></div>
+      <span class="preview-badge" id="previewBadge">Front Center</span>
+    </div>
+    <div class="mockup-wrap" id="mockupWrap">
       <img id="mockupBase" class="mockup-hat" src="assets/112-black.png" alt="Hat mockup base">
-      <div class="patch-overlay"><span id="patchLabel">Your patch preview</span><img id="patchPreview" alt="Uploaded artwork preview" style="display:none"></div>
+      <div class="patch-overlay" id="patchOverlay" data-placement="front-center" data-size="medium"><span id="patchLabel">Your patch preview</span><img id="patchPreview" alt="Uploaded artwork preview" style="display:none"></div>
+      <div class="off-view-note" id="offViewNote" hidden>This placement is saved to the order, but it is not accurately visible from this front-view mockup.</div>
+    </div>
+    <div class="patch-only-card" id="patchOnlyCard" hidden>
+      <span class="kicker">Patch Only</span>
+      <h3>Custom engraved leather patch</h3>
+      <p>Starting at <strong>$5 each</strong>. Choose shape and size above, upload artwork, and add backing or finishing requests in the notes.</p>
     </div>
   </div>
 </div></section>
-<footer class="footer"><div class="container"><div><strong>REC Mama Made</strong><br><span class="note">Custom hats for businesses, teams, events, and everyday wear.</span></div><div class="note">Standard hat + patch: $30 · Premium hat + patch: $35 · Every 12 hats = 1 free</div></div></footer>
-<script src="assets/catalog-data.js?v=20260324f"></script><script src="assets/drive-assets.js?v=20260324f"></script><script src="assets/app.js?v=20260324f"></script>
+<footer class="footer"><div class="container"><div><strong>REC Mama Made</strong><br><span class="note">Custom hats and standalone leather patches for businesses, teams, events, gifts, and everyday wear.</span></div><div class="note">Standard hat + patch: $30 · Premium hat + patch: $35 · Patch only: from $5 · Every 12 hats = 1 free hat</div></div></footer>
+<script src="assets/catalog-data.js?v=20260324f"></script><script src="assets/drive-assets.js?v=20260324f"></script><script src="assets/app.js?v=20260815a"></script>
 </body></html>
