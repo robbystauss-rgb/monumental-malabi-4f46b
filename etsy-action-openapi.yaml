@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: REC Mama Made Etsy Manager
-  version: 1.1.0
+  version: 1.2.0
   description: Private API for reading and updating the REC Mama Made Etsy shop. Listing deletion is intentionally not exposed.
 servers:
   - url: https://recmamamade.netlify.app/.netlify/functions
@@ -12,7 +12,6 @@ paths:
     get:
       operationId: getEtsyConnectionStatus
       summary: Check Etsy connection and shop identity
-      description: Use this first to verify the private Etsy connector is authorized and to identify the connected shop.
       responses:
         '200':
           description: Connection status and shop information.
@@ -20,11 +19,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConnectionStatus'
+  /hat-options:
+    get:
+      operationId: getHatVariationCatalog
+      summary: Get REC Mama Made hat models and verified Drive color options
+      description: Use this as the source of truth for Richardson hat model/color combinations. Do not invent colors or assign a color to the wrong model.
+      responses:
+        '200':
+          description: Verified hat catalog sourced from REC Mama Made Google Drive.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HatCatalog'
   /etsy-listings:
     get:
       operationId: listEtsyListings
       summary: List Etsy listings by state
-      description: Read listings for the connected REC Mama Made shop. Use before editing so the correct listing_id and current listing data are known.
       parameters:
         - in: query
           name: state
@@ -32,7 +42,6 @@ paths:
             type: string
             enum: [active, inactive, sold_out, draft, expired]
             default: active
-          description: Etsy listing state to retrieve.
         - in: query
           name: limit
           schema:
@@ -53,6 +62,73 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListingsResponse'
+  /etsy-listing-inventory:
+    get:
+      operationId: getEtsyListingInventory
+      summary: Read listing variation inventory
+      description: Use before any variation update. Returns products, offerings, and property values for a listing.
+      parameters:
+        - in: query
+          name: listing_id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: Etsy listing inventory.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryResponse'
+  /etsy-listing-inventory-update:
+    post:
+      operationId: updateEtsyListingInventory
+      summary: Replace listing variation inventory
+      description: High-impact write. Read current inventory first and only call after explicit approval. The request must contain the full desired product set because Etsy inventory updates replace the inventory definition.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [listing_id, products]
+              properties:
+                listing_id:
+                  type: integer
+                  minimum: 1
+                max_variations_supported:
+                  type: integer
+                  enum: [2, 3]
+                  default: 2
+                products:
+                  type: array
+                  minItems: 1
+                  items:
+                    $ref: '#/components/schemas/InventoryProductWrite'
+                price_on_property:
+                  type: array
+                  items:
+                    type: integer
+                quantity_on_property:
+                  type: array
+                  items:
+                    type: integer
+                sku_on_property:
+                  type: array
+                  items:
+                    type: integer
+                readiness_state_on_property:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: Updated Etsy listing inventory.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryResponse'
   /etsy-listing-update:
     post:
       operationId: updateEtsyListing
@@ -112,7 +188,6 @@ paths:
     post:
       operationId: updateEtsyListingPersonalization
       summary: Create or replace listing personalization questions
-      description: Replaces the listing's personalization question configuration using Etsy's current personalization API. Read the listing first and only change personalization when requested.
       requestBody:
         required: true
         content:
@@ -171,7 +246,6 @@ paths:
     post:
       operationId: updateEtsyShop
       summary: Update REC Mama Made shop information
-      description: Changes shop-facing text such as title or announcement. Only perform the fields the user explicitly approves.
       requestBody:
         required: true
         content:
@@ -198,7 +272,6 @@ paths:
     post:
       operationId: uploadEtsyListingImageFromUrl
       summary: Upload a public HTTPS image to an Etsy listing
-      description: Downloads a public HTTPS image and uploads it to an existing Etsy listing. This changes the listing's customer-facing media and should only be used after the user approves the image.
       requestBody:
         required: true
         content:
@@ -251,6 +324,41 @@ components:
         token_expires_at:
           type: integer
       additionalProperties: true
+    HatModel:
+      type: object
+      properties:
+        label:
+          type: string
+        options:
+          type: array
+          items:
+            type: string
+        source_file:
+          type: string
+        source_pattern:
+          type: string
+      additionalProperties: true
+    HatCatalog:
+      type: object
+      properties:
+        source:
+          type: string
+        source_folder_id:
+          type: string
+        models:
+          type: object
+          properties:
+            Richardson 112:
+              $ref: '#/components/schemas/HatModel'
+            Richardson 168:
+              $ref: '#/components/schemas/HatModel'
+            Richardson 256:
+              $ref: '#/components/schemas/HatModel'
+            Richardson 112PFP:
+              $ref: '#/components/schemas/HatModel'
+        recommendation:
+          type: string
+      additionalProperties: true
     ListingSummary:
       type: object
       properties:
@@ -294,6 +402,146 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ListingSummary'
+      additionalProperties: true
+    InventoryMoney:
+      type: object
+      properties:
+        amount:
+          type: integer
+        divisor:
+          type: integer
+        currency_code:
+          type: string
+      additionalProperties: true
+    InventoryOffering:
+      type: object
+      properties:
+        offering_id:
+          type: integer
+        quantity:
+          type: integer
+        is_enabled:
+          type: boolean
+        is_deleted:
+          type: boolean
+        price:
+          oneOf:
+            - type: number
+            - $ref: '#/components/schemas/InventoryMoney'
+        readiness_state_id:
+          type: integer
+      additionalProperties: true
+    InventoryOfferingWrite:
+      type: object
+      required: [quantity, is_enabled, price]
+      properties:
+        quantity:
+          type: integer
+          minimum: 0
+        is_enabled:
+          type: boolean
+        price:
+          type: number
+          minimum: 0
+        readiness_state_id:
+          type: integer
+      additionalProperties: false
+    InventoryPropertyValue:
+      type: object
+      properties:
+        property_id:
+          type: integer
+        property_name:
+          type: string
+        scale_id:
+          type: integer
+        scale_name:
+          type: string
+        value_ids:
+          type: array
+          items:
+            type: integer
+        values:
+          type: array
+          items:
+            type: string
+      additionalProperties: true
+    InventoryPropertyValueWrite:
+      type: object
+      required: [property_id, property_name, value_ids, values]
+      properties:
+        property_id:
+          type: integer
+        property_name:
+          type: string
+        scale_id:
+          type: integer
+        value_ids:
+          type: array
+          items:
+            type: integer
+        values:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    InventoryProduct:
+      type: object
+      properties:
+        product_id:
+          type: integer
+        sku:
+          type: string
+        is_deleted:
+          type: boolean
+        offerings:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryOffering'
+        property_values:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryPropertyValue'
+      additionalProperties: true
+    InventoryProductWrite:
+      type: object
+      required: [offerings, property_values]
+      properties:
+        sku:
+          type: string
+        offerings:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/InventoryOfferingWrite'
+        property_values:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryPropertyValueWrite'
+      additionalProperties: false
+    InventoryResponse:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryProduct'
+        price_on_property:
+          type: array
+          items:
+            type: integer
+        quantity_on_property:
+          type: array
+          items:
+            type: integer
+        sku_on_property:
+          type: array
+          items:
+            type: integer
+        readiness_state_on_property:
+          type: array
+          items:
+            type: integer
       additionalProperties: true
     ListingResponse:
       type: object
