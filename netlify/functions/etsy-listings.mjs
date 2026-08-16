@@ -11,7 +11,9 @@ export default async (request) => {
     const offset = Math.max(Number(url.searchParams.get('offset') || 0), 0);
 
     const { shop } = await resolveMyShop();
-    const data = await etsyFetch(`/shops/${shop.shop_id}/listings?state=${encodeURIComponent(state)}&limit=${limit}&offset=${offset}&sort_on=updated&sort_order=down`);
+    const data = await etsyFetch(
+      `/shops/${shop.shop_id}/listings?state=${encodeURIComponent(state)}&limit=${limit}&offset=${offset}&sort_on=updated&sort_order=down&includes=personalization`
+    );
     return json({ shop_id: shop.shop_id, shop_name: shop.shop_name, ...data });
   } catch (error) {
     return json(safeError(error), error.status || 500);
