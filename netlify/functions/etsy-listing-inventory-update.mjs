@@ -74,13 +74,13 @@ export default async (request) => {
     for (const signature of expectedSignatures) if (actualSignatures.has(signature)) matched += 1;
 
     return json({
-      result,
-      backup: {
+      ...result,
+      _rec_mama_backup: {
         created_at: backup.created_at,
         retained_backups: 10,
         before: inventorySummary(before)
       },
-      verification: {
+      _rec_mama_verification: {
         expected: inventorySummary({ products: payload.products }),
         actual: inventorySummary(after),
         expected_product_count: payload.products.length,
