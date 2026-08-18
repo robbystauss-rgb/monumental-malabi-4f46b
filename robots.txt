@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /.netlify/functions/
+Disallow: /etsy-action-openapi.yaml
+Disallow: /etsy-gpt-instructions.txt
+
+Sitemap: https://recmamamade.netlify.app/sitemap.xml
