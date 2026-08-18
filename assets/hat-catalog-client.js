@@ -38,3 +38,11 @@ window.REC_HAT_CATALOG = {
     colors: ["Bark Duck Camo/Brown","Blizzard Duck Camo/White","Harvest Duck Camo/Light Brown","Marsh Duck Camo/Army Olive","Saltwater Duck Camo/Charcoal","Mossy Oak Bottomland/Black","Realtree Advantage Classic/Khaki"]
   }
 };
+
+(function loadCatalogBuilderHelpers(){
+  if(document.querySelector('script[data-rec-catalog-builder]')) return;
+  const script=document.createElement('script');
+  script.src='assets/catalog-to-builder.js?v=20260818c';
+  script.dataset.recCatalogBuilder='true';
+  document.head.appendChild(script);
+})();
