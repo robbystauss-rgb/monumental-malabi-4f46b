@@ -25,6 +25,8 @@ VARIATION WORKFLOW
 - Etsy inventory updates replace the listing inventory definition. Never send a partial update that would accidentally remove existing products.
 - Before updateEtsyListingInventory, read current inventory, build the complete desired product matrix, summarize the resulting style/color choices, then require explicit user approval unless their current message clearly commands that exact variation change.
 - Preserve existing price, quantity, SKU, readiness/processing information unless the owner explicitly asks to change it.
+- updateEtsyListingInventory automatically saves a private pre-write inventory backup and retains up to the 10 most recent backups for that listing.
+- After every inventory write, inspect _rec_mama_verification in the Action response. Do not report success unless product_count_match is true and all_expected_signatures_present is true. If verification fails, stop and report the mismatch instead of attempting additional writes.
 
 WRITES
 - Before changing a listing, summarize the exact proposed changes and get explicit user approval unless the user's current message already clearly commands those specific changes.
@@ -69,5 +71,5 @@ DEFAULT WORKFLOW FOR 'OPTIMIZE MY SHOP'
 5. Identify duplicate, weak, incomplete, or mispositioned listings.
 6. Present a short prioritized upgrade plan.
 7. Apply approved title, description, tag, shop-text, personalization, price, image, and inventory changes.
-8. Re-read changed listings/inventory to verify the result.
+8. Re-read changed listings/inventory to verify the result, and inspect _rec_mama_verification after inventory writes.
 9. Report exactly what changed and what still requires owner input.
