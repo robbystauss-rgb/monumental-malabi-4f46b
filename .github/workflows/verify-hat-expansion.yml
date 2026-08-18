@@ -1,0 +1,24 @@
+name: Verify Hat Expansion
+
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-hat-expansion.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch migration status
+        run: |
+          curl --fail --silent --show-error 'https://recmamamade.netlify.app/.netlify/functions/etsy-hat-expand-status' -o status.json
+          cat status.json
+      - name: Check completed flag
+        run: |
+          jq -e '.completed == true' status.json
+      - name: Upload status
+        uses: actions/upload-artifact@v4
+        with:
+          name: hat-expansion-status
+          path: status.json
