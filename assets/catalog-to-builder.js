@@ -93,9 +93,23 @@
     }
     if(btn){const old=btn.textContent;btn.textContent='Link copied';setTimeout(()=>btn.textContent=old,1400)}
   }
-  document.addEventListener('DOMContentLoaded',()=>{
+  function injectShareButton(){
+    if(byId('shareBtn')) return;
+    const actions=document.querySelector('.builder-actions');
+    if(!actions) return;
+    const button=document.createElement('button');
+    button.className='btn btn-secondary';
+    button.id='shareBtn';
+    button.type='button';
+    button.textContent='Share this setup';
+    actions.insertBefore(button,actions.lastElementChild || null);
+  }
+  function run(){
     linkCatalogCards();
+    injectShareButton();
     applyBuilderParams();
     byId('shareBtn')?.addEventListener('click',shareBuilder);
-  });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
+  else run();
 })();
