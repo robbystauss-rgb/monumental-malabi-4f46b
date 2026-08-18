@@ -4,3 +4,41 @@
 
 [functions]
   node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/build"
+  to = "/order.html"
+  status = 301
+
+[[redirects]]
+  from = "/order"
+  to = "/order.html"
+  status = 301
+
+[[redirects]]
+  from = "/shop"
+  to = "https://www.etsy.com/shop/RECMamaMade"
+  status = 302
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
