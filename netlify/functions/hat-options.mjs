@@ -1,6 +1,6 @@
 import { json, requireConnectorAuth } from './_etsy.mjs';
 
-const catalog = {
+export const catalog = {
   source: 'REC Mama Made Google Drive hats folder + connected Canva Richardson designs/catalogs',
   source_folder_id: '1q64TulmIlif8NNHQCzzefURTGncCgXQt',
   rules: [
@@ -12,98 +12,30 @@ const catalog = {
   models: {
     'Richardson 112': {
       label: 'Richardson 112 Trucker',
-      featured_options: [
-        'Royal', 'Black', 'Red', 'Quarry', 'Khaki/Coffee',
-        'Blue Teal/Birch/Navy', 'White/Red', 'White/Royal'
-      ],
-      options: [
-        'White','Black','Cardinal','Columbia Blue','Biscuit/True Blue','Quarry','Red','Royal','Dark Green','Loden','Orange','Navy','Purple','Amber Gold','Charcoal','Coffee','Cream','Kelly','Light Blue','Light Grey','Maroon','Smoke Blue',
-        'Khaki/Coffee','Purple/White','Khaki/Legion Blue','Heather Grey/Dark Green','Charcoal/Black','Charcoal/Royal','Khaki/White','Khaki/Loden','Heather Grey/Light Grey','Charcoal/Columbia Blue','Charcoal/White','Loden/Black','Khaki/Navy','Heather Grey/Navy','Charcoal/Kelly','Chocolate Chip/Birch','Black/Charcoal','Black/Gold','Royal/Black','Maroon/White','White/Black','Heather Grey/Red','Columbia Blue/Black','Charcoal/Navy','Black/Vegas Gold','Royal/Red','White/Charcoal','Heather Grey/Royal','Columbia Blue/Khaki','Charcoal/Neon Blue','Black/White','Heather Grey/White','Navy/Khaki','Cyan/White','Black/Yellow','White/Kelly','Hot Pink/Black','Charcoal/Neon Orange','Navy/Orange','Brown/Khaki','White/Navy','Hot Pink/White','Charcoal/Neon Pink','Dark Green/Gold','Kelly/Black','White/Red','Caramel/Black','Charcoal/Neon Yellow','Navy/White','Dark Green/White','Kelly/White','Orange/Black','Khaki/Black','White/Royal','Cardinal/Black','Charcoal/Orange','Dark Green/Yellow','Khaki/Burgundy','Orange/White','Khaki/Chocolate Chip','Cardinal/White','Charcoal/Red','White/Columbia Blue','White/Dark Green',
-        'Navy/White/Red','Grey/Charcoal/Black','Orange/White/Black','Grey/Charcoal/Navy','Red/White/Black','Heather Grey/Birch/Amber Gold','Heather Grey/Birch/Army Olive','Heather Grey/Cardinal/Navy','Red/White/Navy','Royal/White/Heather Grey','Black/White/Heather Grey','Royal/White/Red','Heather Grey/Charcoal/Dark Orange','Heather Grey/Charcoal/Maroon','Black/White/Red','Heather Grey/Dark Green/Black','Heather Grey/Red/Black','Blue Teal/Birch/Navy','White/Aluminum/Black','White/Aluminum/Navy','White/Columbia Blue/Yellow','Mink Beige/Charcoal/Amber Gold','Navy/White/Heather Grey','Columbia Blue/White/Navy','Dark Green/White/Heather Grey'
-      ],
+      featured_options: ['Royal','Black','Red','Quarry','Khaki/Coffee','Blue Teal/Birch/Navy','White/Red','White/Royal'],
+      options: ['White','Black','Cardinal','Columbia Blue','Biscuit/True Blue','Quarry','Red','Royal','Dark Green','Loden','Orange','Navy','Purple','Amber Gold','Charcoal','Coffee','Cream','Kelly','Light Blue','Light Grey','Maroon','Smoke Blue','Khaki/Coffee','Purple/White','Khaki/Legion Blue','Heather Grey/Dark Green','Charcoal/Black','Charcoal/Royal','Khaki/White','Khaki/Loden','Heather Grey/Light Grey','Charcoal/Columbia Blue','Charcoal/White','Loden/Black','Khaki/Navy','Heather Grey/Navy','Charcoal/Kelly','Chocolate Chip/Birch','Black/Charcoal','Black/Gold','Royal/Black','Maroon/White','White/Black','Heather Grey/Red','Columbia Blue/Black','Charcoal/Navy','Black/Vegas Gold','Royal/Red','White/Charcoal','Heather Grey/Royal','Columbia Blue/Khaki','Charcoal/Neon Blue','Black/White','Heather Grey/White','Navy/Khaki','Cyan/White','Black/Yellow','White/Kelly','Hot Pink/Black','Charcoal/Neon Orange','Navy/Orange','Brown/Khaki','White/Navy','Hot Pink/White','Charcoal/Neon Pink','Dark Green/Gold','Kelly/Black','White/Red','Caramel/Black','Charcoal/Neon Yellow','Navy/White','Dark Green/White','Kelly/White','Orange/Black','Khaki/Black','White/Royal','Cardinal/Black','Charcoal/Orange','Dark Green/Yellow','Khaki/Burgundy','Orange/White','Khaki/Chocolate Chip','Cardinal/White','Charcoal/Red','White/Columbia Blue','White/Dark Green','Navy/White/Red','Grey/Charcoal/Black','Orange/White/Black','Grey/Charcoal/Navy','Red/White/Black','Heather Grey/Birch/Amber Gold','Heather Grey/Birch/Army Olive','Heather Grey/Cardinal/Navy','Red/White/Navy','Royal/White/Heather Grey','Black/White/Heather Grey','Royal/White/Red','Heather Grey/Charcoal/Dark Orange','Heather Grey/Charcoal/Maroon','Black/White/Red','Heather Grey/Dark Green/Black','Heather Grey/Red/Black','Blue Teal/Birch/Navy','White/Aluminum/Black','White/Aluminum/Navy','White/Columbia Blue/Yellow','Mink Beige/Charcoal/Amber Gold','Navy/White/Heather Grey','Columbia Blue/White/Navy','Dark Green/White/Heather Grey'],
       sources: ['Canva: Richardson 112 Editable Template','Canva: R112 Hats with in stock colors','Canva: 2025_STOCK_R2_Our Choice.pdf','Drive: Richardson 112.png']
     },
     'Richardson 168': {
       label: 'Richardson 168 Seven-Panel Trucker',
-      options: [
-        'Black','Loden','Navy','Black/Green Camo/Loden','Pale Khaki/Brown','Brown/Khaki','Caramel','Pale Khaki/Loden','Quarry','Charcoal','Red/Black','Charcoal/Black','Royal/Black','Charcoal/Black/White','White','Charcoal/Burnt Orange/Black','Charcoal/Old Gold','Dark Green/Black','Heather Grey/Black'
-      ],
+      options: ['Black','Loden','Navy','Black/Green Camo/Loden','Pale Khaki/Brown','Brown/Khaki','Caramel','Pale Khaki/Loden','Quarry','Charcoal','Red/Black','Charcoal/Black','Royal/Black','Charcoal/Black/White','White','Charcoal/Burnt Orange/Black','Charcoal/Old Gold','Dark Green/Black','Heather Grey/Black'],
       sources: ['Drive: RICHARDSON_168_COLOR_CHART_INCH.png','Drive: individual 168 color PNGs','Canva: 2025_STOCK_R2_Our Choice.pdf']
     },
-    'Richardson 168P': {
-      label: 'Richardson 168P Printed Seven-Panel Trucker',
-      options: ['Bark Duck Camo/Brown','Harvest Duck Camo/Sandstone','Marsh Duck Camo/Loden','Saltwater Duck Camo/Ice Grey','Mossy Oak Bottomland/Loden','Realtree Advantage Classic/Khaki'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 256': {
-      label: 'Richardson 256 Umpqua Gramps Cap',
-      featured_options: ['Black/Black','Loden/Gold','Red/White','Midnight Navy/White','Navy/White','Black/White','Biscuit/Black','White/Black'],
-      options: ['Birch/Black','Midnight Navy/White','Navy/Red','Biscuit/Black','Navy/White','Black/Black','Black/White','Pale Peach/Maroon','Red/White','Cardinal/White','Sage/White','Charcoal/White','Sand Dune/Loden','Dark Mocha/Khaki','White/Black','Dark Orange/Black','Dusty Blue/White','Dusty Red/White','Loden/Gold'],
-      sources: ['Drive: individual 256 PNGs','Canva: Copy of Richardson 256 Editable Template','Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 256P': {
-      label: 'Richardson 256P Printed Umpqua Gramps Cap',
-      options: ['Bark Duck Camo/Brown','Blizzard Duck Camo/White','Harvest Duck Camo/Light Brown','Marsh Duck Camo/Army Olive','Saltwater Duck Camo/Charcoal','Mossy Oak Bottomland/Black','Realtree Advantage Classic/Khaki'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 112PFP': {
-      label: 'Richardson 112PFP Printed Five-Panel Trucker',
-      options: [
-        'Realtree Edge/Brown','Green Camo/Black','Digital Camo/Light Green','Green Camo/White','Desert Camo/Brown','Realtree Edge/Neon Orange','Admiral Duck Camo/Black','Realtree Edge/Neon Pink','Kryptek Highlander/Buck','Bark Duck Camo/Brown','Kryptek Inferno/Blaze Orange','Realtree Edge/Neon Yellow','Blaze Duck Camo/Blaze','Realtree Escape/Black','Kryptek Neptune/White','Kryptek Typhon/Black','Realtree Fishing Light Blue/White','Kryptek Typhon/Blaze Orange','Realtree Max-1 XT/Brown','Blizzard Duck Camo/White','Harvest Duck Camo/Light Tan','Realtree Max-7/Buck','Marsh Duck Camo/Loden','Sable Duck Camo/Black','Realtree Original/Black','Realtree Timber/Black','Saltwater Duck Camo/Charcoal','Mossy Oak Bottomland/Loden','Mossy Oak Country DNA/Black','Mossy Oak Elements Bonefish/Light Grey','Mossy Oak Habitat/Brown','Sienna Duck Camo/Loden',
-        'Kryptek Neptune/Black','Kryptek Inferno/Black','Kryptek Typhon/Neon Pink','Kryptek Typhon/Neon Yellow','Kryptek Typhon/Neon Orange','Mossy Oak Elements Blacktip/Charcoal','Realtree Fishing Light Blue/Navy'
-      ],
-      sources: ['Drive: individual 112PFP PNGs','Drive: White Background folder','Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 112P': {
-      label: 'Richardson 112P Printed Trucker',
-      options: ['Digital Camo/Light Green','Green Camo/Black','Green Camo/White','Kryptek Highlander/Buck','Kryptek Pontus/White','Kryptek Typhon/Black','Mossy Oak Country DNA/Black','Mossy Oak Bottomland/Loden','Realtree Edge/Brown','Realtree Max-7/Buck','Realtree Original/Black'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 112PM': {
-      label: 'Richardson 112PM Printed Mesh Trucker',
-      options: ['Black/Black-White Fade','Brown/Desert Camo','Green Camo/Stars & Stripes','Heather Grey/Stars & Stripes','Loden/Green Camo','Mossy Oak Country DNA/Stars & Stripes','Navy/Navy-White Fade','Silver/Grey Camo'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 112FPR': {
-      label: 'Richardson 112FPR Five-Panel Trucker with Rope',
-      options: ['Black/Black','Loden/Loden','Black/White','Loden/Black/Black','Navy/White','Black/Charcoal/Charcoal','Brown/Brown','Navy/Dark Orange/Dark Orange','White/Black','Brown/Khaki/Khaki','White/Navy','Caramel/Black/Black','Charcoal/Charcoal','Columbia Blue/Navy','Heather Grey/Black/Black','Heather Grey/White/White','Kelly/White'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 115': {
-      label: 'Richardson 115 Low Pro Trucker',
-      options: ['Black','Black/Charcoal','Black/Neon Pink','Black/White','Blue Teal/Birch/Navy','Brown/Khaki','Caramel/Birch','Caramel/Black','Charcoal/Black','Charcoal/Red','Charcoal/White','Chocolate Chip/Birch','Chocolate Chip/Grey Brown','Coffee/Claret','Cream/Loden/Dark Orange','Cyan/Black','Dark Green Heather/Light Grey','Dark Loden/Jaffa Orange','Dark Orange/Birch/Patriot Blue','Heather Grey/Birch/Amber Gold','Heather Grey/Birch/Army Olive','Heather Grey/Birch/Cardinal','Heather Grey/Dark Charcoal','Hot Pink/Black','Lilac/Birch','Loden','Loden/Black','Navy','Navy/Khaki','Navy/White','Navy Heather/Light Grey','Patina Green/Birch','Peach/Birch','Red/White','Red Heather/Light Grey','Royal/White','Royal Heather/Light Grey','Smoke Blue/Aluminum','Spruce/Birch/Light Navy','Tan/Loden/Brown','White','White/Blue Hawaiian/Pale Orange','White/Columbia Blue/Brown'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 112+': {
-      label: 'Richardson 112+ R-Flex Adjustable Trucker',
-      options: ['Black','White','Black/Graphite','Black/White','Brown/Khaki','Charcoal/Black','Charcoal/White','Heather Grey/Black','Heather Grey/White','Loden/Black','Navy','Navy/White'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 355': {
-      label: 'Richardson 355 Laser Perf Performance Rope Cap',
-      options: ['Black/Black-Grey','Clay/White-Grey','Dark Loden/Tannin/Grey','Light Olive/Olive','Lilac/White-Grey','Navy/Midnight Navy-Grey-Blue','Oat Milk/Elmwood-White','Silver/Black-Silver','Smoke Blue/Grey-White','Trench Coat/Russet-Grey','White/White-Black'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 169': {
-      label: 'Richardson 169 Cannon Seven-Panel Performance Cap',
-      options: ['Pool Blue','Basil Green','Black','White','Charcoal','Claret Red','Desert Orange','Grey','Light Navy','Maroon','Moss Green','Navy','Oat Milk'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 258': {
-      label: 'Richardson 258 Five-Panel Classic Rope Cap',
-      options: ['Black/White','White/Black','Dark Grey/White','White/Kelly','White/Navy','Dark Olive/White','Kelly/White','Light Blue/White','Light Grey/Black','Light Grey/White','Navy/White','Red/White','Smoke Blue/White','Soft Blue/Navy'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    },
-    'Richardson 173': {
-      label: 'Richardson 173 Hood River Performance Trucker',
-      options: ['Black','Moss Green/Vivid Orange','Black/White','Red Mahogany/Medium Grey/Insignia Blue','White','Cement Grey/Dark Charcoal','Cement Grey/Dark Charcoal/Pool Blue','Charcoal','Charcoal/White','Deep Spruce/Light Khaki','Desert Orange/Light Khaki/Insignia Blue','Insignia Blue/China Blue','Midnight Navy','Midnight Navy/White'],
-      sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf']
-    }
+    'Richardson 168P': { label: 'Richardson 168P Printed Seven-Panel Trucker', options: ['Bark Duck Camo/Brown','Harvest Duck Camo/Sandstone','Marsh Duck Camo/Loden','Saltwater Duck Camo/Ice Grey','Mossy Oak Bottomland/Loden','Realtree Advantage Classic/Khaki'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 256': { label: 'Richardson 256 Umpqua Gramps Cap', featured_options: ['Black/Black','Loden/Gold','Red/White','Midnight Navy/White','Navy/White','Black/White','Biscuit/Black','White/Black'], options: ['Birch/Black','Midnight Navy/White','Navy/Red','Biscuit/Black','Navy/White','Black/Black','Black/White','Pale Peach/Maroon','Red/White','Cardinal/White','Sage/White','Charcoal/White','Sand Dune/Loden','Dark Mocha/Khaki','White/Black','Dark Orange/Black','Dusty Blue/White','Dusty Red/White','Loden/Gold'], sources: ['Drive: individual 256 PNGs','Canva: Copy of Richardson 256 Editable Template','Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 256P': { label: 'Richardson 256P Printed Umpqua Gramps Cap', options: ['Bark Duck Camo/Brown','Blizzard Duck Camo/White','Harvest Duck Camo/Light Brown','Marsh Duck Camo/Army Olive','Saltwater Duck Camo/Charcoal','Mossy Oak Bottomland/Black','Realtree Advantage Classic/Khaki'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 112PFP': { label: 'Richardson 112PFP Printed Five-Panel Trucker', options: ['Realtree Edge/Brown','Green Camo/Black','Digital Camo/Light Green','Green Camo/White','Desert Camo/Brown','Realtree Edge/Neon Orange','Admiral Duck Camo/Black','Realtree Edge/Neon Pink','Kryptek Highlander/Buck','Bark Duck Camo/Brown','Kryptek Inferno/Blaze Orange','Realtree Edge/Neon Yellow','Blaze Duck Camo/Blaze','Realtree Escape/Black','Kryptek Neptune/White','Kryptek Typhon/Black','Realtree Fishing Light Blue/White','Kryptek Typhon/Blaze Orange','Realtree Max-1 XT/Brown','Blizzard Duck Camo/White','Harvest Duck Camo/Light Tan','Realtree Max-7/Buck','Marsh Duck Camo/Loden','Sable Duck Camo/Black','Realtree Original/Black','Realtree Timber/Black','Saltwater Duck Camo/Charcoal','Mossy Oak Bottomland/Loden','Mossy Oak Country DNA/Black','Mossy Oak Elements Bonefish/Light Grey','Mossy Oak Habitat/Brown','Sienna Duck Camo/Loden','Kryptek Neptune/Black','Kryptek Inferno/Black','Kryptek Typhon/Neon Pink','Kryptek Typhon/Neon Yellow','Kryptek Typhon/Neon Orange','Mossy Oak Elements Blacktip/Charcoal','Realtree Fishing Light Blue/Navy'], sources: ['Drive: individual 112PFP PNGs','Drive: White Background folder','Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 112P': { label: 'Richardson 112P Printed Trucker', options: ['Digital Camo/Light Green','Green Camo/Black','Green Camo/White','Kryptek Highlander/Buck','Kryptek Pontus/White','Kryptek Typhon/Black','Mossy Oak Country DNA/Black','Mossy Oak Bottomland/Loden','Realtree Edge/Brown','Realtree Max-7/Buck','Realtree Original/Black'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 112PM': { label: 'Richardson 112PM Printed Mesh Trucker', options: ['Black/Black-White Fade','Brown/Desert Camo','Green Camo/Stars & Stripes','Heather Grey/Stars & Stripes','Loden/Green Camo','Mossy Oak Country DNA/Stars & Stripes','Navy/Navy-White Fade','Silver/Grey Camo'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 112FPR': { label: 'Richardson 112FPR Five-Panel Trucker with Rope', options: ['Black/Black','Loden/Loden','Black/White','Loden/Black/Black','Navy/White','Black/Charcoal/Charcoal','Brown/Brown','Navy/Dark Orange/Dark Orange','White/Black','Brown/Khaki/Khaki','White/Navy','Caramel/Black/Black','Charcoal/Charcoal','Columbia Blue/Navy','Heather Grey/Black/Black','Heather Grey/White/White','Kelly/White'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 115': { label: 'Richardson 115 Low Pro Trucker', options: ['Black','Black/Charcoal','Black/Neon Pink','Black/White','Blue Teal/Birch/Navy','Brown/Khaki','Caramel/Birch','Caramel/Black','Charcoal/Black','Charcoal/Red','Charcoal/White','Chocolate Chip/Birch','Chocolate Chip/Grey Brown','Coffee/Claret','Cream/Loden/Dark Orange','Cyan/Black','Dark Green Heather/Light Grey','Dark Loden/Jaffa Orange','Dark Orange/Birch/Patriot Blue','Heather Grey/Birch/Amber Gold','Heather Grey/Birch/Army Olive','Heather Grey/Birch/Cardinal','Heather Grey/Dark Charcoal','Hot Pink/Black','Lilac/Birch','Loden','Loden/Black','Navy','Navy/Khaki','Navy/White','Navy Heather/Light Grey','Patina Green/Birch','Peach/Birch','Red/White','Red Heather/Light Grey','Royal/White','Royal Heather/Light Grey','Smoke Blue/Aluminum','Spruce/Birch/Light Navy','Tan/Loden/Brown','White','White/Blue Hawaiian/Pale Orange','White/Columbia Blue/Brown'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 112+': { label: 'Richardson 112+ R-Flex Adjustable Trucker', options: ['Black','White','Black/Graphite','Black/White','Brown/Khaki','Charcoal/Black','Charcoal/White','Heather Grey/Black','Heather Grey/White','Loden/Black','Navy','Navy/White'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 355': { label: 'Richardson 355 Laser Perf Performance Rope Cap', options: ['Black/Black-Grey','Clay/White-Grey','Dark Loden/Tannin/Grey','Light Olive/Olive','Lilac/White-Grey','Navy/Midnight Navy-Grey-Blue','Oat Milk/Elmwood-White','Silver/Black-Silver','Smoke Blue/Grey-White','Trench Coat/Russet-Grey','White/White-Black'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 169': { label: 'Richardson 169 Cannon Seven-Panel Performance Cap', options: ['Pool Blue','Basil Green','Black','White','Charcoal','Claret Red','Desert Orange','Grey','Light Navy','Maroon','Moss Green','Navy','Oat Milk'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 258': { label: 'Richardson 258 Five-Panel Classic Rope Cap', options: ['Black/White','White/Black','Dark Grey/White','White/Kelly','White/Navy','Dark Olive/White','Kelly/White','Light Blue/White','Light Grey/Black','Light Grey/White','Navy/White','Red/White','Smoke Blue/White','Soft Blue/Navy'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] },
+    'Richardson 173': { label: 'Richardson 173 Hood River Performance Trucker', options: ['Black','Moss Green/Vivid Orange','Black/White','Red Mahogany/Medium Grey/Insignia Blue','White','Cement Grey/Dark Charcoal','Cement Grey/Dark Charcoal/Pool Blue','Charcoal','Charcoal/White','Deep Spruce/Light Khaki','Desert Orange/Light Khaki/Insignia Blue','Insignia Blue/China Blue','Midnight Navy','Midnight Navy/White'], sources: ['Canva: 2025_STOCK_R2_Our Choice.pdf'] }
   },
-  etsy_strategy: {
-    primary_styles: ['Richardson 112','Richardson 168','Richardson 256','Richardson 112PFP'],
-    recommendation: 'Use Hat Style + Hat Color as linked Etsy inventory variations. Keep featured_options near the top where available; preserve the rest as verified special-order choices. Two variations are sufficient for style/color.'
-  }
+  etsy_strategy: { primary_styles: ['Richardson 112','Richardson 168','Richardson 256','Richardson 112PFP'], recommendation: 'Use Hat Style + Hat Color as linked Etsy inventory variations. Keep featured_options near the top where available; preserve the rest as verified special-order choices. Two variations are sufficient for style/color.' }
 };
 
 export default async (request) => {
