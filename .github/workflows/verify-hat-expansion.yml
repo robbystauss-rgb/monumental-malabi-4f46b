@@ -22,3 +22,5 @@ jobs:
         with:
           name: hat-expansion-status
           path: status.json
+
+# Verification trigger: 2026-08-18 site upgrade pass
