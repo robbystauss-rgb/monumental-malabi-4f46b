@@ -4,15 +4,41 @@ import { resolveMyShop, etsyFetch } from './_etsy.mjs';
 const LISTING_ID = 4435836820;
 const IMAGE_URL = 'https://drive.google.com/thumbnail?id=12gEjZLyIQubcX64TMvYoOoc24pQxG78t&sz=w2000';
 const RESULT_KEY = 'actual-work-image-upload-v1';
+const REPORTED_KEY = 'actual-work-image-form-reported-v1';
 
 function imageList(listing) {
   return Array.isArray(listing?.images) ? listing.images : Array.isArray(listing?.Images) ? listing.Images : [];
 }
 
+async function reportVerifiedResult(store, result) {
+  const reported = await store.get(REPORTED_KEY, { type: 'json' });
+  if (reported?.reported === true || result?.verified !== true) return;
+  const body = new URLSearchParams({
+    'form-name': 'etsy-actual-work-verification',
+    verified: 'true',
+    listing_id: String(result.listing_id || ''),
+    image_id: String(result.image_id || ''),
+    rank: String(result.rank || ''),
+    before_image_count: String(result.before_image_count ?? ''),
+    after_image_count: String(result.after_image_count ?? ''),
+    completed_at: String(result.completed_at || '')
+  });
+  const response = await fetch('https://recmamamade.netlify.app/etsy-upload-status-bridge.html', {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body
+  });
+  if (!response.ok) throw new Error(`Could not submit verification bridge: ${response.status}`);
+  await store.setJSON(REPORTED_KEY, { reported: true, at: new Date().toISOString() });
+}
+
 export default async () => {
   const store = getStore('rec-mama-etsy-auth', { consistency: 'strong' });
   const done = await store.get(RESULT_KEY, { type: 'json' });
-  if (done?.verified === true) return;
+  if (done?.verified === true) {
+    await reportVerifiedResult(store, done);
+    return;
+  }
 
   const before = await etsyFetch(`/listings/${LISTING_ID}?includes=Images`);
   const beforeImages = imageList(before);
@@ -52,6 +78,7 @@ export default async () => {
   };
   await store.setJSON(RESULT_KEY, result);
   if (!verified) throw new Error(`Etsy upload returned but verification failed: ${JSON.stringify(result)}`);
+  await reportVerifiedResult(store, result);
 };
 
 export const config = { schedule: '* * * * *' };
