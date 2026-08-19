@@ -1,0 +1,29 @@
+name: Verify Actual Work Etsy Image
+
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-actual-work-image.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for one-shot scheduled upload and verify
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='https://recmamamade.netlify.app/.netlify/functions/etsy-actual-work-image-status'
+          for i in 1 2 3 4 5 6; do
+            echo "Verification attempt $i"
+            curl --fail --silent --show-error "$url" -o status.json
+            cat status.json
+            if jq -e '.verified == true' status.json >/dev/null; then
+              echo 'ETSY_ACTUAL_WORK_IMAGE_VERIFIED=true'
+              exit 0
+            fi
+            sleep 20
+          done
+          echo 'ETSY_ACTUAL_WORK_IMAGE_VERIFIED=false'
+          exit 1
