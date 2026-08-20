@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Build a Custom Leather Patch Hat | REC Mama Made</title>
-<meta name="description" content="Build a custom REC Mama Made leather patch hat or order engraved leather patches. Choose a verified Richardson colorway, patch shape, size and placement, upload artwork, and preview your order.">
+<meta name="description" content="Build and securely check out a custom REC Mama Made leather patch hat or engraved leather patch order. Choose a verified Richardson colorway, patch shape, size and placement, and upload artwork.">
 <link rel="canonical" href="https://recmamamade.netlify.app/order.html">
-<meta property="og:type" content="website"><meta property="og:title" content="Build a Custom Leather Patch Hat | REC Mama Made"><meta property="og:description" content="Choose your Richardson hat style, verified colorway, patch size and placement, then preview your custom order."><meta property="og:url" content="https://recmamamade.netlify.app/order.html">
+<meta property="og:type" content="website"><meta property="og:title" content="Build a Custom Leather Patch Hat | REC Mama Made"><meta property="og:description" content="Choose your Richardson hat style, verified colorway, patch size and placement, then securely check out on REC Mama Made."><meta property="og:url" content="https://recmamamade.netlify.app/order.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/styles.css?v=20260818b">
-<link rel="stylesheet" href="assets/order-enhance.css?v=20260818b">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"REC Mama Made Custom Hat Builder","url":"https://recmamamade.netlify.app/order.html","description":"Custom leather patch hat and engraved leather patch order builder.","isPartOf":{"@type":"WebSite","name":"REC Mama Made","url":"https://recmamamade.netlify.app/"}}</script>
+<link rel="stylesheet" href="assets/order-enhance.css?v=20260819c">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"REC Mama Made Custom Hat Builder","url":"https://recmamamade.netlify.app/order.html","description":"Custom leather patch hat and engraved leather patch order builder with direct secure checkout.","isPartOf":{"@type":"WebSite","name":"REC Mama Made","url":"https://recmamamade.netlify.app/"}}</script>
 </head>
 <body>
 <a class="skip-link" href="#builder">Skip to order builder</a>
@@ -20,7 +20,7 @@
 <section class="hero"><div class="container">
   <span class="kicker">Build it your way</span>
   <h1>Custom hats or patches—without the guesswork.</h1>
-  <p>Choose a hat or patch-only order, select a verified model-specific colorway, upload your artwork, set the patch size and placement, then use the live preview to build a clear order request.</p>
+  <p>Choose a hat or patch-only order, select a verified model-specific colorway, upload your artwork, set the patch size and placement, then review your order before secure checkout.</p>
   <div class="trust-strip" aria-label="Order highlights">
     <span>Custom patch hats from $30</span>
     <span>Patch-only orders from $5</span>
@@ -62,7 +62,29 @@
 
     <div class="order-status" id="orderStatus" role="status" aria-live="polite"></div>
     <div class="summary" style="margin-top:16px" id="summaryBox"></div>
-    <div class="builder-actions"><button class="btn btn-primary" id="copyBtn" type="button">Copy order summary</button><button class="btn btn-secondary" id="emailBtn" type="button">Open email draft</button><a class="btn btn-secondary" href="https://www.etsy.com/listing/4435836820" target="_blank" rel="noopener noreferrer">Continue to Etsy</a></div>
+
+    <section class="checkout-panel" id="checkoutPanel" aria-labelledby="checkoutTitle">
+      <div class="checkout-heading">
+        <div><span class="kicker">Secure checkout</span><h3 id="checkoutTitle">Pay directly on REC Mama Made</h3></div>
+        <span class="checkout-lock" aria-label="Secure checkout">Secure</span>
+      </div>
+      <p class="checkout-lead">Your hat model, colorway, patch details, quantity and bulk bonus are recalculated securely on the server before payment.</p>
+      <div class="payment-rail" id="paymentStripeMethods">
+        <div><strong>Stripe checkout</strong><span>Cards · Apple Pay · Google Pay · Cash App Pay</span></div>
+        <button class="btn btn-primary checkout-main-btn" id="stripeCheckoutBtn" type="button" disabled>Card / Wallet Checkout</button>
+      </div>
+      <div class="payment-rail" id="paymentPaypalMethods">
+        <div><strong>PayPal checkout</strong><span>PayPal · Venmo when eligible</span></div>
+        <div class="paypal-buttons" aria-label="PayPal and Venmo checkout">
+          <paypal-button id="paypalButton" type="pay" hidden></paypal-button>
+          <venmo-button id="venmoButton" type="pay" hidden></venmo-button>
+        </div>
+      </div>
+      <div class="checkout-message" id="checkoutMessage" role="status" aria-live="polite">Checking secure payment availability…</div>
+      <div class="checkout-order-ref">Order reference: <strong id="checkoutOrderId">Created when checkout begins</strong></div>
+    </section>
+
+    <div class="builder-actions"><button class="btn btn-secondary" id="copyBtn" type="button">Copy order summary</button><button class="btn btn-secondary" id="emailBtn" type="button">Open email draft</button><a class="btn btn-secondary" id="etsyFallback" href="https://www.etsy.com/listing/4435836820" target="_blank" rel="noopener noreferrer">Temporary Etsy fallback</a></div>
     <p class="note" style="margin-top:12px">Preview is for order planning only. Final artwork, leather color, sizing, and production placement can be confirmed before production.</p>
   </div>
   <div class="mockup-stage">
@@ -88,5 +110,5 @@
   </div>
 </div></section>
 <footer class="footer"><div class="container"><div><strong>REC Mama Made</strong><br><span class="note">Custom hats and standalone leather patches for businesses, teams, events, gifts, and everyday wear.</span></div><div class="note">Standard hat + patch: $30 · Premium hat + patch: $35 · Patch only: from $5 · Buy 12 hats, get 1 additional hat free</div></div></footer>
-<script src="assets/catalog-data.js?v=20260324f"></script><script src="assets/drive-assets.js?v=20260324f"></script><script src="assets/hat-catalog-client.js?v=20260818b"></script><script src="assets/app.js?v=20260818b"></script>
+<script src="assets/catalog-data.js?v=20260324f"></script><script src="assets/drive-assets.js?v=20260324f"></script><script src="assets/hat-catalog-client.js?v=20260818b"></script><script src="assets/app.js?v=20260818b"></script><script src="assets/checkout.js?v=20260819c"></script>
 </body></html>
